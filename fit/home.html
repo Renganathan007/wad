@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Home Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url("home3.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 100%;
+            height: 100vh;
+        }
+        
+        #signinbtn {
+            height: 50px;
+            width: 200px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 25px;
+            margin-left: 230px;
+            border: 5px solid whitesmoke;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        #signupbtn {
+            height: 50px;
+            width: 200px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 25px;
+            margin-left: 230px;
+            border: 5px solid whitesmoke;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgb(238, 234, 221);
+        }
+        
+        li {
+            float: left;
+            border-right: 1px solid #bbb;
+        }
+        
+        li:last-child {
+            border-right: none;
+        }
+        
+        li a {
+            display: block;
+            color: navy;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+            background-color: #FFDAAF;
+        }
+        
+        #container {
+            height: 200px;
+            width: 50%;
+            margin-top: 80px;
+            margin-left: 25%;
+            padding-top: 50px;
+            border: 10px solid whitesmoke;
+            border-radius: 10px;
+            padding-bottom: 50px;
+        }
+        
+        h1 {
+            background-color: #FFDAAF;
+            color: navy;
+            margin-left: 300px;
+            margin-right: 300px;
+            border-radius: 2px;
+            height: 40px;
+            padding-top: 0px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <ul>
+        <li><a class="active" href="home.html">HOME</a></li>
+        <li><a href="aboutus.html">ABOUTUS</a></li>
+        <li><a href="signup.php">SIGNUP</a></li>
+        <li><a href="signin.php">SIGNIN</a></li>
+        <li><a href="Gallery.html">GALLERY</a></li>
+        <li><a href="feeback.php">FEEDBACK</a></li>
+
+    </ul>
+    <h1 style="text-align: center;">Fitness Stay Fit Stay Strong</h1>
+    <br>
+    <br>
+
+    <div id="container">
+
+
+        <form action="signin.php">
+            <input type="submit" id="signinbtn" value="Login">
+        </form>
+        <br>
+        <br>
+        <form action="signup.php">
+            <input type="submit" id="signupbtn" value="Register">
+        </form>
+    </div>
+</body>
+
+</html>

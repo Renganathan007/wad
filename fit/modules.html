@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .workout {
+            background-origin: padding-box;
+            background-color: rgb(46, 44, 44);
+            border: 3px solid #f5f7f5;
+            padding: 5px;
+            text-align: center;
+            width: 480px;
+            color: white;
+            font-size: 20px;
+            margin-left: 5px;
+        }
+        
+        .button {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: rgb(193, 248, 213);
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 28px;
+            padding: 20px;
+            width: 150px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .button a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+        
+        .button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+        
+        .button:hover span {
+            padding-right: 25px;
+        }
+        
+        .button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+        
+        .navbar {
+            margin-left: 30px;
+            align-items: center;
+            height: 15px;
+        }
+        
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: verdana;
+        }
+        
+        #btn {
+            height: 30px;
+            width: 200px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 15px;
+            margin-left: 50px;
+            border: 5px solid whitesmoke;
+            border-radius: 5px;
+        }
+        
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgb(238, 234, 221);
+        }
+        
+        li {
+            float: left;
+            border-right: 1px solid #bbb;
+        }
+        
+        li:last-child {
+            border-right: none;
+        }
+        
+        li a {
+            display: block;
+            color: navy;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+            background-color: #FFDAAF;
+        }
+    </style>
+
+    <body style="background:black">
+        <ul>
+            <li><a href="home.html">HOME</a></li>
+            <li><a href="aboutus.html">ABOUTUS</a></li>
+            <li><a href="signup.php">SIGNUP</a></li>
+
+            <li><a href="Gallery.html">GALLERY</a></li>
+            <li><a href="feeback.php">FEEDBACK</a></li>
+            <li><a href="home.html">LOGOUT</a></li>
+            <!-- <li style="float: left;height: 20px;padding:10px;"><input type="submit" name="logout" id="out" value="logout"></li> -->
+
+        </ul>
+        <table>
+            <tr>
+                <td>
+                    <div class="workout"><br>
+                        <img src="card.jpg" style="width:350px;height:250px;"><br><br>
+                        <h2 style="color:white">LEG TONING</h2>
+                        <p>Strong legs help you improve cardiovascular exercises, lifting and build core strength and your endurance. If you want to strengthen your legs you'll need to do exercises that focus on working your leg muscles.</p>
+                        <form action="catagories.html" method="POST">
+                            <input type="submit" id="btn" value="WORKOUT PLAN" />
+                        </form>
+                    </div>
+                    </div><br>
+                </td>
+                <td>
+                    <div class="workout"><br>
+                        <img src="card1.jpg" style="width:350px;height:250px;"><br><br>
+                        <h2 style="color:white">ABS AND CHEST</h2>
+                        <p>In addition to your back and shoulder muscles, your pecs help to stabilize the shoulder joint. Better Breathing: In addition to improving your posture, strengthening and lengthening chest muscles helps to support deeper breathing.</p>
+                        <form action="day2.html" method="POST">
+                            <input type="submit" id="btn" value="WORKOUT PLAN" />
+                        </form>
+                    </div><br>
+                </td>
+                <td>
+                    <div class="workout"><br>
+                        <img src="card3.jpg" style="width:350px;height:250px;"><br><br>
+                        <h2 style="color:white">LOWER BODY</h2>
+                        <p>Lower-body exercises are to build strength in the lower back, hips, glutes, and legs. Lower-body exercises include lunges, squats etc. Exercising your lower body builds foundational strength for everyday movements.</p>
+                        <form action="day3.html" method="POST">
+                            <input type="submit" id="btn" value="WORKOUT PLAN" />
+                        </form>
+                    </div><br>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="workout"><br>
+                        <img src="card4.jpg" style="width:350px;height:250px;"><br><br>
+                        <h2 style="color:white">CARDIO</h2>
+                        <p>Cardio exercise, which is sometimes referred to as aerobic exercise, is any rhythmic activity that raises your heart rate into your target heart rate zone. This is the zone where you burn the most fat and calories.</p>
+                        <form action="day4.html" method="POST">
+                            <input type="submit" id="btn" value="WORKOUT PLAN" />
+                        </form>
+                    </div>
+                    </div><br>
+                </td>
+                <td>
+                    <div class="workout"><br>
+                        <img src="card5.jpg" style="width:350px;height:250px;"><br><br>
+                        <h2 style="color:white">BOOSTING METABOLISM</h2>
+                        <p>boosting of metabolism increasing your metabolism will provide you with more energy, aid in weight loss and keep it off, and help you experience quality sleep while burning more calories at bedtime.</p>
+                        <form action="day5.html" method="POST">
+                            <input type="submit" id="btn" value="WORKOUT PLAN" />
+                        </form>
+                    </div><br>
+                </td>
+                <td>
+                    <div class="workout"><br>
+                        <img src="card7.jpg" style="width:350px;height:250px;"><br><br>
+                        <h2 style="color:white">DYNAMIC STRETCHES</h2>
+                        <p> Dynamic stretching is a movement-based method of stretching. Dynamic flexibility is the ability to move muscles and joints through their full range of motion during active movement.</p>
+                        <form action="day6.html" method="POST">
+                            <input type="submit" id="btn" value="WORKOUT PLAN" />
+                        </form>
+                    </div><br>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="workout"><br>
+                        <img src="card6.jpeg" style="width:350px;height:250px;"><br><br>
+                        <h2 style="color:white">THIGH TONING CIRCUIT</h2>
+                        <p>Each of these exercises works multiple muscle groups for an efficient total-body routine and they also burn an incredible number of calories.</p>
+                        <form action="day7.html" method="POST">
+                            <input type="submit" id="btn" value="WORKOUT PLAN" />
+                        </form>
+                    </div>
+                    </div><br>
+                </td>
+                <td>
+                    <div class="workout"><br>
+                        <img src="card8.jpg" style="width:350px;height:250px;"><br><br>
+                        <h2 style="color:white">AEROBICS</h2>
+                        <p>Aerobic exercise is cardiovascular exercise, that gets your heart pumping. During aerobic exercise, your blood pumps quickly throughout your body and your lungs take in more oxygen.</p>
+                        <form action="aerobic.html" method="POST">
+                            <input type="submit" id="btn" value="WORKOUT PLAN" />
+                        </form>
+                    </div><br>
+                </td>
+                <td>
+                    <div class="workout"><br>
+                        <img src="card9.jpg" style="width:350px;height:250px;"><br><br>
+                        <h2 style="color:white">FLEXIBILITY</h2>
+                        <p>Stretching your body allows easier and deeper movements ,greater range of motion, improved balance, and increased flexibility while building strength and stability..</p>
+                        <form action="flexibility.html" method="POST">
+                            <input type="submit" id="btn" value="WORKOUT PLAN" />
+                        </form>
+                    </div><br>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </body>
+
+</html>

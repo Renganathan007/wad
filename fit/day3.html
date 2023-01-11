@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #frame {
+            margin: 0 auto;
+            width: 800px;
+            max-width: 100%;
+            text-align: center;
+        }
+        
+        #frame input[type=radio] {
+            display: none;
+        }
+        
+        #frame label {
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        #slides {
+            padding: 10px;
+            border: 5px solid rgb(4, 4, 4);
+            background: rgb(247, 247, 248);
+            position: relative;
+            z-index: 1;
+        }
+        
+        #overflow {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        #frame1:checked~#slides .inner {
+            margin-left: 0;
+        }
+        
+        #frame2:checked~#slides .inner {
+            margin-left: -100%;
+        }
+        
+        #frame3:checked~#slides .inner {
+            margin-left: -200%;
+        }
+        
+        #frame4:checked~#slides .inner {
+            margin-left: -300%;
+        }
+        
+        #slides .inner {
+            transition: margin-left 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+            width: 400%;
+            line-height: 0;
+            height: 300px;
+        }
+        
+        #slides .frame {
+            width: 25%;
+            float: left;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: #FFF;
+        }
+        
+        #slides .frame_1 {
+            background: rgb(241, 217, 64);
+        }
+        
+        #slides .frame_2 {
+            background: rgb(231, 197, 24);
+        }
+        
+        #slides .frame_3 {
+            background: rgb(245, 179, 24);
+        }
+        
+        #slides .frame_4 {
+            background: rgb(244, 164, 5);
+        }
+        
+        #controls {
+            margin: -180px 0 0 0;
+            width: 100%;
+            height: 50px;
+            z-index: 3;
+            position: relative;
+        }
+        
+        #controls label {
+            transition: opacity 0.2s ease-out;
+            display: none;
+            width: 50px;
+            height: 50px;
+            opacity: .4;
+        }
+        
+        #controls label:hover {
+            opacity: 1;
+        }
+        
+        #frame1:checked~#controls label:nth-child(2),
+        #frame2:checked~#controls label:nth-child(3),
+        #frame3:checked~#controls label:nth-child(4),
+        #frame4:checked~#controls label:nth-child(1) {
+            background: url(https://image.flaticon.com/icons/svg/130/130884.svg) no-repeat;
+            float: right;
+            margin: 0 -50px 0 0;
+            display: block;
+        }
+        
+        #frame1:checked~#controls label:nth-last-child(2),
+        #frame2:checked~#controls label:nth-last-child(3),
+        #frame3:checked~#controls label:nth-last-child(4),
+        #frame4:checked~#controls label:nth-last-child(1) {
+            background: url(https://image.flaticon.com/icons/svg/130/130882.svg) no-repeat;
+            float: left;
+            margin: 0 0 0 -50px;
+            display: block;
+        }
+        
+        #bullets {
+            margin: 150px 0 0;
+            text-align: center;
+        }
+        
+        #bullets label {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            background: #ccc;
+            margin: 0 10px;
+        }
+        
+        #frame1:checked~#bullets label:nth-child(1),
+        #frame2:checked~#bullets label:nth-child(2),
+        #frame3:checked~#bullets label:nth-child(3),
+        #frame4:checked~#bullets label:nth-child(4) {
+            background: #444;
+        }
+        
+        @media screen and (max-width: 900px) {
+            #frame1:checked~#controls label:nth-child(2),
+            #frame2:checked~#controls label:nth-child(3),
+            #frame3:checked~#controls label:nth-child(4),
+            #frame4:checked~#controls label:nth-child(1),
+            #frame1:checked~#controls label:nth-last-child(2),
+            #frame2:checked~#controls label:nth-last-child(3),
+            #frame3:checked~#controls label:nth-last-child(4),
+            #frame4:checked~#controls label:nth-last-child(1) {
+                margin: 0;
+            }
+            #slides {
+                max-width: calc(100% - 140px);
+                margin: 0 auto;
+            }
+        }
+        
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        
+        .workout {
+            background-origin: padding-box;
+            border: 3px solid #f5f7f5;
+            padding: 5px;
+            text-align: center;
+            width: 350px;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .button {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: rgb(247, 234, 149);
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 28px;
+            padding: 20px;
+            width: 150px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .button a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+        
+        .button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+        
+        .button:hover span {
+            padding-right: 25px;
+        }
+        
+        .button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+        
+        .navbar {
+            margin-left: 30px;
+            align-items: center;
+            height: 15px;
+        }
+        
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: verdana;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 500px;
+            height: 250px;
+            border-radius: 100px;
+            padding-left: 32%;
+        }
+        
+        h1 {
+            color: rgba(10, 196, 238, 0.286);
+            text-align: center;
+        }
+        
+        .digit {
+            font-size: 50px;
+            color: #fff;
+        }
+        
+        .txt {
+            font-size: 30px;
+            color: #fffcd6;
+        }
+        
+        #buttons {
+            margin-top: 50px;
+        }
+        
+        .btn {
+            width: 55px;
+            padding: 10px;
+            margin: 0px 20px;
+            border-radius: 15px;
+            font-size: 15px;
+            transition: 0.5s;
+            padding-left: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        
+        #start {
+            background-color: #009779;
+        }
+        
+        #stop {
+            background-color: #c91400;
+        }
+        
+        #reset {
+            background-color: goldenrod;
+        }
+    </style>
+</head>
+
+<body style="background:black">
+    <h2 style="color:white;text-align:center;font-size:50px">LOWER BODY</h2>
+
+    <div id="frame">
+        <input type="radio" name="frame" id="frame1" checked />
+        <input type="radio" name="frame" id="frame2" />
+        <input type="radio" name="frame" id="frame3" />
+        <input type="radio" name="frame" id="frame4" />
+        <div id="slides">
+            <div id="overflow">
+                <div class="inner">
+                    <div class="frame frame_1">
+                        <div class="frame-content" style="color:black;font-size: 30px;">
+                            <h2>BREAKFAST</h2><br><br>
+                            <P> GRAINED OATS - 1/2 CUP</P>
+                            <P>SOY MILK - 1 GLASS</P>
+                            <P>AVACADO - 1</P>
+                        </div>
+                    </div>
+                    <div class="frame frame_2" style="color:black;font-size: 30px;">
+                        <div class="frame-content">
+                            <h2>LUNCH</h2><br><br>
+                            <P>GRILLED EGGPLANT</P>
+                            <P>PITTED OLIVES</P>
+                            <P>BROWN RICE - 1 CUP</P>
+                        </div>
+                    </div>
+                    <div class="frame frame_3" style="color:black;font-size: 30px;">
+                        <div class="frame-content">
+                            <h2>SNACK</h2><br><br>
+                            <P>WEDGE PAPAYA - 1</P>
+                            <P>GREEN TEA - 1 GLASS</P>
+                            <P>DRIED FIG - 30g</P>
+                        </div>
+                    </div>
+                    <div class="frame frame_4" style="color:black;font-size: 30px;">
+                        <div class="frame-content">
+                            <h2>DINNER</h2><br><br>
+                            <P>BOILED PEAS</P>
+                            <P>VEGGIE SOUP - 1 CUP</P>
+                            <P>BAKED STAKE 200g</P>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="controls">
+            <label for="frame1"></label>
+            <label for="frame2"></label>
+            <label for="frame3"></label>
+            <label for="frame4"></label>
+        </div>
+        <div id="bullets">
+            <label for="frame1"></label>
+            <label for="frame2"></label>
+            <label for="frame3"></label>
+            <label for="frame4"></label>
+        </div>
+    </div><br><br><br>
+    <div class="container">
+        <div id="time">
+            <span class="digit" id="min">
+              00</span>
+
+            <span style="font-size:medium;" class="txt">Min </span>
+            <span class="digit" id="sec">
+              00</span>
+            <span style="font-size: medium;" class="txt">Sec</span>
+            <span class="digit" id="count">
+              00</span>
+        </div>
+        <div id="buttons">
+            <button class="btn" id="start">
+              Start</button>
+            <button class="btn" id="stop">
+              Stop</button>
+            <button class="btn" id="reset">
+              Reset</button>
+        </div>
+    </div>
+    <script>
+        let startBtn = document.getElementById('start');
+        let stopBtn = document.getElementById('stop');
+        let resetBtn = document.getElementById('reset');
+
+        let minute = 00;
+        let second = 00;
+        let count = 00;
+
+        startBtn.addEventListener('click', function() {
+            timer = true;
+            stopWatch();
+        });
+
+        stopBtn.addEventListener('click', function() {
+            timer = false;
+        });
+
+        resetBtn.addEventListener('click', function() {
+            timer = false;
+            minute = 0;
+            second = 0;
+            count = 0;
+            document.getElementById('min').innerHTML = "00";
+            document.getElementById('sec').innerHTML = "00";
+            document.getElementById('count').innerHTML = "00";
+        });
+
+        function stopWatch() {
+            if (timer) {
+                count++;
+
+                if (count == 100) {
+                    second++;
+                    count = 0;
+                }
+
+                if (second == 60) {
+                    minute++;
+                    second = 0;
+                }
+
+                if (minute == 60) {
+                    hour++;
+                    minute = 0;
+                    second = 0;
+                }
+
+                let minString = minute;
+                let secString = second;
+                let countString = count;
+
+
+
+                if (minute < 10) {
+                    minString = "0" + minString;
+                }
+
+                if (second < 10) {
+                    secString = "0" + secString;
+                }
+
+                if (count < 10) {
+                    countString = "0" + countString;
+                }
+
+                document.getElementById('min').innerHTML = minString;
+                document.getElementById('sec').innerHTML = secString;
+                document.getElementById('count').innerHTML = countString;
+                setTimeout(stopWatch, 10);
+            }
+        }
+    </script>
+    <h2 style="color:white">WORKOUT PLAN</h2>
+    <table>
+        <tr>
+            <td>
+                <div class="workout"><br>
+                    <img src="lower1.gif" style="width:250px;height:250px;"><br><br> TOUCH AND HOP<br> 30 sec + 30 sec
+                </div>
+                </div><br>
+            </td>
+            <td>
+                <div class="workout"><br>
+                    <img src="leg7.gif" style="width:250px;height:250px;"><br><br> BACK LUNGES<br> 45 sec + 45 sec
+                </div><br>
+            </td>
+            <td>
+                <div class="workout"><br>
+                    <img src="lower2.gif" style="width:250px;height:250px;"><br><br> CROSS SCISSORS<br> 30 sec + 30 sec
+                </div><br>
+                </div>
+            </td>
+            <td>
+                <div class="workout"><br>
+                    <img src="lower3.gif" style="width:250px;height:250px;"><br><br> ADVANCE BRIDGE<br> 45 sec
+                </div><br>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="workout"><br>
+                    <img src="lower5.gif" style="width:250px;height:250px;"><br><br> JUMP AND START<br> 30 sec + 30 sec
+                </div>
+
+                </div><br>
+            </td>
+            <td>
+                <div class="workout"><br>
+                    <img src="lower6.gif" style="width:250px;height:250px;"><br><br> HEISMAN
+                    <br> 45 sec + 45 sec
+                </div><br>
+            </td>
+            <td>
+                <div class="workout"><br>
+                    <img src="lower7.gif" style="width:250px;height:250px;"><br><br> WALKING LUNGES<br> 30 sec + 30 sec
+                </div><br>
+                </div>
+            </td>
+            <td>
+                <div class="workout"><br>
+                    <img src="lower8.gif" style="width:250px;height:250px;"><br><br> SIDE TO SIDE SHUFFLE<br> 30 sec + 30 sec
+                </div><br>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
